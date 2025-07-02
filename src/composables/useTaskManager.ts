@@ -2,7 +2,48 @@ import { ref, computed } from 'vue'
 import type { Task, CreateTaskInput, UpdateTaskInput } from '../types/task'
 
 export function useTaskManager() {
-  const tasks = ref<Task[]>([])
+  const tasks = ref<Task[]>([
+    {
+      id: 'sample-task-1',
+      name: 'プロジェクト企画',
+      startDate: new Date('2024-01-01'),
+      endDate: new Date('2024-01-05'),
+      progress: 100,
+      dependencies: []
+    },
+    {
+      id: 'sample-task-2',
+      name: '要件定義',
+      startDate: new Date('2024-01-04'),
+      endDate: new Date('2024-01-10'),
+      progress: 75,
+      dependencies: ['sample-task-1']
+    },
+    {
+      id: 'sample-task-3',
+      name: '基本設計',
+      startDate: new Date('2024-01-08'),
+      endDate: new Date('2024-01-15'),
+      progress: 50,
+      dependencies: ['sample-task-2']
+    },
+    {
+      id: 'sample-task-4',
+      name: '詳細設計',
+      startDate: new Date('2024-01-12'),
+      endDate: new Date('2024-01-20'),
+      progress: 25,
+      dependencies: ['sample-task-3']
+    },
+    {
+      id: 'sample-task-5',
+      name: '実装',
+      startDate: new Date('2024-01-18'),
+      endDate: new Date('2024-01-30'),
+      progress: 10,
+      dependencies: ['sample-task-4']
+    }
+  ])
 
   function generateId(): string {
     return `task-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`

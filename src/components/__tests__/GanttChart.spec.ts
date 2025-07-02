@@ -53,7 +53,7 @@ describe('GanttChart', () => {
         }
       })
 
-      const taskElements = wrapper.findAll('[data-testid^="task-"]')
+      const taskElements = wrapper.findAll('.task-row')
       expect(taskElements).toHaveLength(3)
     })
 
@@ -167,7 +167,7 @@ describe('GanttChart', () => {
       })
 
       expect(wrapper.exists()).toBe(true)
-      const taskElements = wrapper.findAll('[data-testid^="task-"]')
+      const taskElements = wrapper.findAll('.task-row')
       expect(taskElements).toHaveLength(0)
     })
   })
